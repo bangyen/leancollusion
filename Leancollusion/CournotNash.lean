@@ -52,8 +52,13 @@ theorem nashProfile_erase_sum (n : ℕ) (a b c : ℝ) (hn : 0 < n) (hb : 0 < b)
       = ∑ j ∈ Finset.univ.erase i, nashQuantity n a b c :=
     Finset.sum_congr rfl (fun j _ => nashProfile_val n a b c hb hca j)
   rw [h1, Finset.sum_const, Finset.card_erase_of_mem (Finset.mem_univ i),
-    Finset.card_univ, Fintype.card_fin, nsmul_eq_mul,
-    Nat.cast_sub (show 1 ≤ n by omega), Nat.cast_one]
+    Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
+  have hcast : ((n - 1 : ℕ) : ℝ) = (n : ℝ) - 1 := by
+    have h2 : ((n - 1 + 1 : ℕ) : ℝ) = (n : ℝ) := by
+      exact_mod_cast Nat.sub_add_cancel (show 1 ≤ n by omega)
+    rw [Nat.cast_add, Nat.cast_one] at h2
+    linarith
+  rw [hcast]
 
 /-- At the candidate, each firm's best-response formula returns the candidate
 quantity (first-order condition of the concave profit). -/
@@ -119,8 +124,13 @@ theorem cournotNash_unique_symmetric (n : ℕ) (a b c : ℝ) (hn : 0 < n)
         = ∑ j ∈ Finset.univ.erase i, (q i).val :=
       Finset.sum_congr rfl (fun j _ => hsymm j i)
     rw [h1, Finset.sum_const, Finset.card_erase_of_mem (Finset.mem_univ i),
-      Finset.card_univ, Fintype.card_fin, nsmul_eq_mul,
-      Nat.cast_sub (show 1 ≤ n by omega), Nat.cast_one]
+      Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
+    have hcast : ((n - 1 : ℕ) : ℝ) = (n : ℝ) - 1 := by
+      have h2 : ((n - 1 + 1 : ℕ) : ℝ) = (n : ℝ) := by
+        exact_mod_cast Nat.sub_add_cancel (show 1 ≤ n by omega)
+      rw [Nat.cast_add, Nat.cast_one] at h2
+      linarith
+    rw [hcast]
   -- (q i).val is the unique maximizer, hence the best-response formula.
   have h1 : ∀ y : ℝ, 0 ≤ y →
       (a - c - b * (((n : ℝ) - 1) * (q i).val)) * y - b * y ^ 2

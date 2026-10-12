@@ -19,7 +19,8 @@ calibrated against**:
   equilibrium.
 - **Theorem 2** (`Leancollusion.MonopolyGap`): joint-monopoly output is
   strictly below Nash output for n ≥ 2, with an explicit price gap
-  Δp = (a−c)(n−1)/(2b(n+1)) > 0. Hence the markup screen
+  Δp = (a−c)(n−1)/(2(n+1)) > 0 (the demand slope b cancels: Δp = b·ΔQ).
+  Hence the markup screen
   S = (p̄ − pᴺ)/(pᴹ − pᴺ) is well-defined with S(Nash) = 0 and
   S(monopoly) = 1.
 

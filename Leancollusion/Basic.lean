@@ -70,6 +70,8 @@ theorem quad_max (b : ℝ) (hb : 0 < b) (K x : ℝ) (hx : 0 ≤ x) :
   have hb2 : (0 : ℝ) < 2 * b := by linarith
   by_cases hK : K ≤ 0
   · rw [max_eq_left (div_nonpos_of_nonpos_of_nonneg hK (le_of_lt hb2))]
+    have h0 : K * (0 : ℝ) - b * (0 : ℝ) ^ 2 = 0 := by ring
+    rw [h0]
     have e1 : K * x ≤ 0 := mul_nonpos_of_nonpos_of_nonneg hK hx
     have e2 : (0 : ℝ) ≤ b * x ^ 2 := by positivity
     linarith
@@ -98,9 +100,12 @@ theorem quad_max_unique (b : ℝ) (hb : 0 < b) (K x : ℝ) (hx : 0 ≤ x)
       have e1 : K * x ≤ 0 := mul_nonpos_of_nonpos_of_nonneg hK hx
       have e2 : (0 : ℝ) ≤ b * x ^ 2 := by positivity
       linarith
+    have h0 : K * (0 : ℝ) - b * (0 : ℝ) ^ 2 = 0 := by ring
+    rw [h0] at h
+    have heq0 : K * x - b * x ^ 2 = 0 := le_antisymm hle h
     have heq : x * (K - b * x) = 0 := by
       have hid : x * (K - b * x) = K * x - b * x ^ 2 := by ring
-      linarith
+      rw [hid]; exact heq0
     have hKbx : K - b * x ≤ 0 := by
       have e2 : (0 : ℝ) ≤ b * x := by positivity
       linarith

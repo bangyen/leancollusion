@@ -14,6 +14,7 @@ THEOREMS="
 Leancollusion.cournotNash_symmetric
 Leancollusion.cournotNash_unique_symmetric
 Leancollusion.monopoly_gap
+Leancollusion.price_gap
 Leancollusion.screen_nash_zero
 Leancollusion.screen_monopoly_one
 "
