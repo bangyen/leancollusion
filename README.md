@@ -24,6 +24,14 @@ calibrated against**:
   S = (p̄ − pᴺ)/(pᴹ − pᴺ) is well-defined with S(Nash) = 0 and
   S(monopoly) = 1.
 
+- **Theorem 3** (`Leancollusion.RepeatedCollusion`): the joint-monopoly
+  outcome is sustainable under grim-trigger Nash reversion iff the discount
+  factor δ clears the explicit critical threshold δ* = (n+1)²/(n²+6n+1) —
+  for duopoly, the textbook 9/17. This is the one-shot deviation principle
+  (Friedman 1971; Tirole 1988, Ch. 6.3.2) instantiated at the Cournot
+  payoffs, i.e. exactly the calibration hypothesis of Econlib's
+  grim-trigger subgame-perfection theorem.
+
 Equilibrium definitions are reused from
 [danlyng/Econlib](https://github.com/danlyng/Econlib), not redefined here.
 
@@ -41,11 +49,15 @@ Please read this before citing anything in this repository.
    dynamics* in the regulator simulations. No formalization of those
    dynamics exists here, and none is planned. Do not read this repository
    as a "Lean-proven collusion detector."
-3. **Static, symmetric, linear.** The model is one-shot Cournot with linear
-   inverse demand, symmetric constant marginal costs, and nonnegative
-   quantities. Asymmetric costs, capacity constraints, repeated-game
-   collusion sustainability, and the logit-share Bertrand model used in the
-   regulator repo are all out of scope for v1.
+3. **What v2 adds — and its limits.** Theorem 3 proves the exact
+   discount-factor threshold for grim-trigger collusion sustainability in
+   the infinitely repeated Cournot game. It does **not** cover
+   finite-horizon games, imperfect monitoring, asymmetric costs, or the
+   logit-share Bertrand model. Note: Econlib's full
+   `IsSubgamePerfectEquilibrium` for grim trigger requires a *finite* stage
+   game; our Cournot stage game has continuous quantities, so v2 proves the
+   δ* threshold — the exact content of Econlib's calibration hypothesis —
+   directly. See `Leancollusion/RepeatedCollusion.lean`.
 4. **Proof discipline.** No `sorry`, no `admit`, no custom axioms. Every
    theorem traces to a textbook proposition (Tirole 1988 Ch. 7 or
    Mas-Colell Ch. 12). CI runs `#print axioms` on the main theorems and
@@ -73,5 +85,7 @@ To check the axiom footprint of the main theorems:
   best-response characterization.
 - `Leancollusion/CournotNash.lean` — Theorem 1.
 - `Leancollusion/MonopolyGap.lean` — Theorem 2 and screen calibration.
+- `Leancollusion/RepeatedCollusion.lean` — Theorem 3 (grim-trigger
+  sustainability threshold).
 - `Leancollusion/Examples.lean` — `#eval` numeric anchors cross-checked
-  against the verified simulation outputs.
+  against the verified simulation outputs and textbook values (9/17).

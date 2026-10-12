@@ -17,6 +17,10 @@ Leancollusion.monopoly_gap
 Leancollusion.price_gap
 Leancollusion.screen_nash_zero
 Leancollusion.screen_monopoly_one
+Leancollusion.payoff_ordering
+Leancollusion.oneShotDeviation_iff
+Leancollusion.criticalDiscount_eq
+Leancollusion.grimTrigger_sustainability
 "
 
 fail=0

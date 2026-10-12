@@ -1,6 +1,6 @@
 name = "leancollusion"
-version = "0.1.0"
-description = "Lean 4 formalization of the static game theory behind collusion-detection screens"
+version = "0.2.0"
+description = "Lean 4 formalization of the game theory behind collusion-detection screens: Cournot Nash, screen calibration, grim-trigger sustainability"
 keywords = ["economics", "game-theory", "formal-verification", "collusion"]
 defaultTargets = ["Leancollusion"]
 

@@ -2,4 +2,5 @@
 import Leancollusion.Basic
 import Leancollusion.CournotNash
 import Leancollusion.MonopolyGap
+import Leancollusion.RepeatedCollusion
 import Leancollusion.Examples
