@@ -1,0 +1,23 @@
+name = "leancollusion"
+version = "0.1.0"
+description = "Lean 4 formalization of the static game theory behind collusion-detection screens"
+keywords = ["economics", "game-theory", "formal-verification", "collusion"]
+defaultTargets = ["Leancollusion"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.29.0"
+
+[[require]]
+name = "Econlib"
+git = "https://github.com/danlyng/Econlib"
+rev = "003655ccf010cdf44c4f67d6675167b54ce0e9df"
+
+[[lean_lib]]
+name = "Leancollusion"
